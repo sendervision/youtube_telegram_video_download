@@ -3,6 +3,11 @@ from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import Application, CommandHandler, MessageHandler, CallbackQueryHandler, filters
 import yt_dlp
 
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+
+if not TELEGRAM_BOT_TOKEN:
+    raise ValueError("The TELEGRAM_BOT_TOKEN environment variable is missing.")
+
 # Extract video information
 def get_video_info(url):
     try:
